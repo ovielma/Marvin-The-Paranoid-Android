@@ -1,0 +1,10 @@
+# Development environment
+.vscode
+.python-version
+
+# Text files
+*.txt
+*.json
+
+# Misc
+.DS_STORE
