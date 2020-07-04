@@ -65,13 +65,15 @@ def marvin_reply(r, responses_data):
     recent_utc = 0
 
     with open("utc.txt", "r") as fp:
-        recent_utc = fp.read().split("\n")[-1]
+        recent_utc = fp.readline()
+        utc_readable = int(recent_utc)
+        print("\nLast invocation found on: " + time.strftime("%a, %d %b %Y %I:%M:%S %p", time.localtime(utc_readable)))
 
     try:
-        # prefix 'r' - Python’s raw string notation for regular expression patterns will treat the string as a raw string with all escape codes ignored
-        comment_url = "https://api.pushshift.io/reddit/search/comment/?q=marvin_thinks&sort=desc&size=50&fields=author,body,created_utc,id,subreddit&after=" + recent_utc
+        # Quickly search reddit comments using the Pushshift API
+        comment_search_results = "https://api.pushshift.io/reddit/search/comment/?q=marvin_thinks&sort_type&sort=desc&size=50&fields=author,body,created_utc,id,subreddit&after=" + recent_utc
         
-        parsed_comment_json = json_dump_and_load("comment_data.json", requests.get(comment_url))
+        parsed_comment_json = json_dump_and_load("comment_data.json", requests.get(comment_search_results))
 
         if (len(parsed_comment_json["data"]) > 0):
             recent_utc = parsed_comment_json["data"][0]["created_utc"]
