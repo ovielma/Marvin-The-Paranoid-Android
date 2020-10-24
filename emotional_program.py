@@ -93,7 +93,7 @@ def marvin_reply(r, responses_data):
                 print ("\n\nFound a comment invoking marvin!")
                 comment_reply = "Marvin The Paranoid Android: " + random.choice(responses_data['responses'])
 
-                comment_reply += ("\n\n\n\n---\n\n^(I'm a bot. If there are any issues, contact my) [Creator](https://www.reddit.com/message/compose/?to=emotional_program&subject=/u/emotional_marvin).")
+                comment_reply += ("\n\n\n\n---\n\n^(I'm a bot. If there are any issues, contact my) [Creator](https://www.reddit.com/message/compose/?to=emotional_marvin&subject=/u/emotional_marvin).")
                 print(comment_body, comment_reply)
                 reply_to_comment(r, comment_id, comment_reply, comment_subreddit, comment_author, comment_body)
 
